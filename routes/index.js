@@ -77,7 +77,7 @@ function backup(){
 
   // console.log(now.diff(lastFile, "days"));
   if (now.diff(lastFile, "days") > 7) {
-    database.ref('CalstorySeoURLs').orderByKey().once('value', function (data) {
+    database.ref('/').orderByKey().once('value', function (data) {
       fs.writeFile(dir + '/' + moment().format("YYYY-MM-DD") + '.json', JSON.stringify(data.val()), function (err) {
         if (err)
           return console.log(err);
@@ -94,7 +94,7 @@ function backup(){
 
 setTimeout(function(){
   backup();
-}, 2000);
+}, 200000);
 
 
 module.exports = router;
